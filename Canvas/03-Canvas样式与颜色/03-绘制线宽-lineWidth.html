@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background: url('../grid.png');
+        }
+        canvas{
+            background-color: rgba(255, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <canvas id="tutorial" width="300" height="300"></canvas>
+
+    <script>
+        window.onload = function() {
+            let canvasEl = document.getElementById('tutorial')
+            if(!canvasEl.getContext){
+                return 
+            }
+            let ctx = canvasEl.getContext('2d')
+            console.log(ctx);
+            // 画1px模糊的原因
+            // 线条填充是以坐标为直线 然后周围各取0.5px填充实线 所以很模糊
+            // 如果坐标是20.5 则以20.5为直线 周围各取0.5px填充直线就清除了
+            // ctx.lineWidth = 1
+            // ctx.beginPath()         
+            // ctx.moveTo(20.5,20)
+            // ctx.lineTo(20.5,100)
+            // ctx.stroke()
+
+            ctx.lineWidth = 2
+            ctx.beginPath()         
+            ctx.moveTo(20,20)
+            ctx.lineTo(20,100)
+            ctx.stroke()
+        }
+    </script>
+</body>
+</html>

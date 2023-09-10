@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body,
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-image: url(../images/grid.png);
+        }
+
+        svg {
+            background-color: rgba(255, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <svg width="300" height="300" xmlns='http://www.w3.org/2000/svg'>
+        <!-- 1.icon pervious -->
+        <symbol id='pervious' viewbox="0 0 100 100">
+            <polygon points="20 0,80 50,20 100"></polygon>
+        </symbol>zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
+
+        <!-- 2.icon next -->
+        <symbol id='next' viewbox="0 0 100 100">
+            <path d="M 80 0,L 20 50,L 80 100 Z"></path>
+        </symbol>
+        <!-- 复用 -->
+        <!-- 用symbol定义的 可以在use标签指定宽高 -->
+        <use href="#pervious" width="100" height="100"></use>
+    </svg>
+
+    <!-- 复用 -->
+    <svg width="30" height="30" xmlns='http://www.w3.org/2000/svg'>
+        <use href="#next"></use>
+    </svg>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Echarts容器 -->
+    <div id="main" style="height: 400px;"></div>
+
+    <script src="../libs/echarts-5.3.3.js"></script>
+    <script src="./geojson/china-geojson.js"></script>
+    <script>
+        window.onload = function () {
+
+            // 1.注册中国地图的geo json
+            echarts.registerMap('中国', { geoJSON: china_geojson })
+
+            var myChart = echarts.init(document.getElementById('main'));
+            var option = {
+                geo:{
+                    map:'中国', // 全局的地图（创建一个地理坐标系统，提供其他series来复用）
+                    roam:true
+                },
+                series:[
+                    {
+                        type:'map', // 地图类型 创建一个地理坐标系统，用来展示数据
+                        map:'中国',  
+                        roam:true
+                    }
+                ]
+            };
+            myChart.setOption(option);
+        }
+    </script>
+</body>
+
+</html>

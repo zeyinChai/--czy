@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background: url('../grid.png');
+        }
+        canvas{
+            background-color: rgba(255, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <canvas id="tutorial" width="300" height="300"></canvas>
+
+    <script>
+        window.onload = function() {
+            let canvasEl = document.getElementById('tutorial')
+            if(!canvasEl.getContext){
+                return 
+            }
+            let ctx = canvasEl.getContext('2d')
+            ctx.lineWidth = 10
+            ctx.lineJoin = 'miter' // 默认尖角
+            ctx.lineJoin = 'round' // 圆角
+            ctx.lineJoin = 'bevel' // 平角
+            ctx.beginPath()         
+            ctx.moveTo(0,0)
+            ctx.lineTo(100,100)
+            ctx.lineTo(200,0)
+            ctx.stroke()
+        }
+    </script>
+</body>
+</html>

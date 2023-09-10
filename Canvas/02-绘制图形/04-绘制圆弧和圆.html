@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background: url('../grid.png');
+        }
+        canvas{
+            background-color: rgba(255, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <canvas id="tutorial" width="300" height="300"></canvas>
+
+    <script>
+        window.onload = function() {
+            let canvasEl = document.getElementById('tutorial')
+            if(!canvasEl.getContext){
+                return 
+            }
+            let ctx = canvasEl.getContext('2d')
+            ctx.lineWidth = 5
+            console.log(ctx);
+            ctx.beginPath()
+            // 以50,50为圆心 25为半径 开始的弧度是0 结束的弧度是2PI 因为圆的弧度是2PI 顺时针方法
+            ctx.arc(50,50,25,0,Math.PI * 2,false)
+            ctx.stroke()
+
+            ctx.beginPath()
+            // 以150,150为圆心 25为半径 开始的弧度是0 结束的弧度是PI 因为半圆的弧度是PI 顺时针方法
+            ctx.arc(150,150,25,0,Math.PI,false)
+            ctx.fill()
+        }
+    </script>
+</body>
+</html>

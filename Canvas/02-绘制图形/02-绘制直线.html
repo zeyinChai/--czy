@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background: url('../grid.png');
+        }
+        canvas{
+            background-color: rgba(255, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <canvas id="tutorial" width="500" height="500"></canvas>
+
+    <script>
+        window.onload = function() {
+            let canvasEl = document.getElementById('tutorial')
+            if(!canvasEl.getContext){
+                return 
+            }
+            let ctx = canvasEl.getContext('2d')
+            // 选择画笔大小
+            ctx.lineWidth = 10
+
+            console.log(ctx);
+            ctx.beginPath()         // 1.创建一个新路径
+            ctx.moveTo(100,100)       // 2.移动画笔开始的位置
+            ctx.lineTo(400,400)     // 3.线性绘图命令
+            ctx.closePath()         // 4.关闭路径(不是必须的) 
+            ctx.stroke()            // 5.描边
+        }
+    </script>
+</body>
+</html>

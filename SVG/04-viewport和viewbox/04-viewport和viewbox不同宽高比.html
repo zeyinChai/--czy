@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body,
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-image: url(../images/grid.png);
+        }
+
+        svg {
+            background-color: rgba(255, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <svg width="400" height="400" viewbox="0 0 200 100">
+        <!-- 
+            保留是图框viewbox的宽高比 但视图框viewbox不会拉伸以覆盖整个视口区域 
+                想要拉伸平铺可以preserveAspectRatio="none" 把图片放大后放到原点展示preserveAspectRatio="xMinYMin" 
+            视图框viewbox在视口内垂直和水平居中 
+         -->
+        <circle cx='50' cy='50' r="50"></circle>
+    </svg>
+</body>
+
+</html>

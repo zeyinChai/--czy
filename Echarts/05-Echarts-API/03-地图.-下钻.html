@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="back()"> 返回 </button>
+    <!-- Echarts容器 -->
+    <div id="main" style="height: 400px;"></div>
+
+    <script src="../libs/echarts-5.3.3.js"></script>
+    <script src="./geojson/china-geojson.js"></script>
+    <script src="./geojson/gd_geojson.js"></script>
+    <script>
+        var myChart = null
+        var option = {}
+        window.onload = function () {
+
+            // 1.注册中国地图的geo json
+            echarts.registerMap('中国', { geoJSON: china_geojson })
+
+            myChart = echarts.init(document.getElementById('main'));
+            option = {
+                series: [
+                    {
+                        type: 'map', // 地图类型
+                        map: '中国',
+                        roam: true
+                    }
+                ]
+            };
+            myChart.setOption(option);
+
+            // 地图下钻的功能
+            myChart.on('click', function (event) {
+                if (event.name === '广东') {
+                    if (!echarts.getMap(event.name)) {
+                        // 保证不要重复注册
+                        echarts.registerMap(event.name, { geoJSON: gd_geojson })
+                    }
+                    // 将中国地图切换成广东地图
+                    option.series[0].map = event.name
+                    myChart.setOption(option)
+                }
+            })
+        }
+        function back() {
+            option.series[0].map = '中国'
+            myChart.setOption(option)
+        }
+    </script>
+</body>
+
+</html>

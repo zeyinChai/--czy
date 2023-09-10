@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Echarts容器 -->
+    <div id="main" style="height: 500px;"></div>
+
+    <script src="../libs/echarts-5.3.3.js"></script>
+    <script src="./geojson/china-geojson.js"></script>
+    <script>
+        window.onload = function () {
+
+            // 1.注册中国地图的geo json
+            echarts.registerMap('中国', { geoJSON: china_geojson })
+
+            var myChart = echarts.init(document.getElementById('main'));
+            var option = {
+                backgroundColor: "rgba(40,46,72, 0.2)",
+                grid: {
+                    show: true,
+                    backgroundColor: "rgba(0, 0, 255, 0.2)",
+                },
+                // 4.配置地图
+                geo: {
+                    map: "中国",
+                },
+                series: [
+                    {
+                        name: "散点图",
+                        type: "effectScatter", // 默认是笛卡尔坐标系
+                        geoIndex: 0, // geo 支持数组，默认是 0
+                        coordinateSystem: "geo", // 使用地理坐标系，通过 geoIndex 指定相应的地理坐标系组件。
+                        data: [
+                            {
+                                name: "广东",
+                                value: [113.280637, 23.125178, 193],
+                            },
+                            {
+                                name: "北京",
+                                value: [116.405285, 39.904989, 199],
+                            },
+                        ],
+
+                        // ====== 散点大小和着色========   
+                        symbolSize: function (val) {
+                            return val[2] / 10;
+                        },
+                        itemStyle: {
+                            color: "red",
+                            shadowBlur: 10,
+                            shadowColor: "yellow",
+                        },
+                        // ====== 散点大小和着色========    
+
+                    },
+                ],
+            };
+            myChart.setOption(option);
+        }
+    </script>
+</body>
+
+</html>
